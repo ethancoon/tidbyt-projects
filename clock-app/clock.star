@@ -1,4 +1,4 @@
-load("render.star", "render)
+load("render.star", "render")
 load("time.star", "time")
 
 def main(config):

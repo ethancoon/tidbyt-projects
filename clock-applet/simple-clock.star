@@ -2,11 +2,15 @@ load("render.star", "render")
 load("time.star", "time")
 
 def get_clock_color(minute):
-    return "#F00" if minute == 0 else "#FFF"
+    # Will return purple if it is the start of an hour (4:00, 12:00), else white
+    return "#60F" if minute == 0 else "#FFF"
 
 def main(config):
+    # Obtaining the timezone given, or a default timezone if none is given.
     timezone = config.get("timezone") or "America/New_York"
+    # The current time in the location specified by the timezone
     now = time.now().in_location(timezone)
+    # The current minute of the day
     minute = now.minute
 
     return render.Root(

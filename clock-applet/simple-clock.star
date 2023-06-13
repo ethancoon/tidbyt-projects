@@ -1,6 +1,9 @@
 load("render.star", "render")
 load("time.star", "time")
 
+# plan: top image will change depending on time of day
+# may also change color of text for hour marks (4:00, 12:00)
+
 def main(config):
     timezone = config.get("timezone") or "America/New_York"
     now = time.now().in_location(timezone)
@@ -8,11 +11,16 @@ def main(config):
     return render.Root(
         delay = 500,
         child = render.Column(
+            expanded = True,
+            main_align = "space_around",
             cross_align = "center",
             children = [
-                render.Circle(
-                    color = "#ff0",
-                    diameter = 10,
+                render.Box(
+                    height = 15,
+                    child = render.Circle(
+                        color = "#ff0",
+                        diameter = 10,  
+                    ),  
                 ),
                 render.Box(
                     child = render.Animation(

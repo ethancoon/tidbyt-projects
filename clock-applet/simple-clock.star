@@ -17,12 +17,9 @@ DEFAULT_LOCATION = {
 	"timezone": "America/New_York"
 }
 
-ICONS = {
-    "sun": """iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAYAAACinX6EAAAAAXNSR0IArs4c6QAAALlJREFUaEPtlcsNgDAMQ9sN2AcxPWIfNigqoojfoUhOlCjuGRL32UlzCn5y8PsnAmACghPgCCgHoBz9zIDXFlKWeU3jNFQO2r0/vdYWsQOoxwoETQDn5QkgYAJu7kdKwL7129y3LWRl/qU38cv1i/PSvbtfd8kl2N78pxjJnt0Xbx+aEvNbPeAHAgBAdF2CCXBtH0A8EwCA6LoEE+DaPoB4JgAA0XUJJsC1fQDxTAAAousSTIBr+wDiN0rsHiHos/QUAAAAAElFTkSuQmCC""",
+sun = """iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAYAAACinX6EAAAAAXNSR0IArs4c6QAAALJJREFUaEPtlsENwCAMA2EBZukEHb4TMAsLUIEEopXaZ2wR90VfsS8OJAbnX3TuPwiAEuCcAHwE6pXq2oN4FlNNpsVWo9P4UZ4ZzKn/W4HAAnibHyhy2htA7/6XeWMIkAQIgBLgfATamP+Owe6X4ATQDl6fwXHZu12EWDZwyDPIYr5vnExiEFoEAEGdqaYSwNQNhBYlAEGdqaYSwNQNhBYlAEGdqaYSwNQNhBYlAEGdqeYNN9o4Ie8+jk4AAAAASUVORK5CYII="""
 
-    "moon": """iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAYAAACinX6EAAAAAXNSR0IArs4c6QAAALJJREFUaEPtlsENwCAMA2EBZukEHb4TMAsLUIEEopXaZ2wR90VfsS8OJAbnX3TuPwiAEuCcAHwE6pXq2oN4FlNNpsVWo9P4UZ4ZzKn/W4HAAnibHyhy2htA7/6XeWMIkAQIgBLgfATamP+Owe6X4ATQDl6fwXHZu12EWDZwyDPIYr5vnExiEFoEAEGdqaYSwNQNhBYlAEGdqaYSwNQNhBYlAEGdqaYSwNQNhBYlAEGdqeYNN9o4Ie8+jk4AAAAASUVORK5CYII="""
-}
-
+moon = """iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAFhJREFUKFNjZMADivNf/++dKMoIUgImsAGQoqAQVoZ1a34zgBRjVQhTBDMApJh8heimgUzFaiJBhSAFIN0gDyADFM9gMwXZI2BfE6MIHo4wa9HDExbYIHEAlPA7O8Urb04AAAAASUVORK5CYII="""
 
 def get_clock_color(minute):
     # Will return purple if it is the start of an hour (4:00, 12:00), else white
@@ -31,11 +28,13 @@ def get_clock_color(minute):
 def get_icon(sunrise, sunset, now):
     if sunrise.unix < now.unix and sunset.unix > now.unix:
         return render.Box(
-            child = render.Image(src = base64.decode(ICONS["moon"]))
+            height = 14,
+            child = render.Image(src = base64.decode(sun))
         )
     else:
         return render.Box(
-            child = render.Image(src = base64.decode(ICONS["moon"]))
+            height = 14,
+            child = render.Image(src = base64.decode(moon))
         )
 
 def main(config):
